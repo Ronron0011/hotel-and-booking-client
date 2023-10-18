@@ -1,0 +1,12 @@
+.login-container{
+    background-color: rgba(14, 24, 95,0.9);
+}
+
+body{
+    background: url("/Assets/banner2.jpg"), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+    background-size: 1920px;
+}
+
+.input-label{
+    font-size: 24px;
+}

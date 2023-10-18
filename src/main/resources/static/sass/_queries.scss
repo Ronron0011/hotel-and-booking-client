@@ -1,0 +1,369 @@
+    @media (max-width: 1500px) {}
+    
+    @media (max-width: 1400px) {
+        .header-box ul .nav-item .nav-link {
+            font-size: 15px;
+        }
+    }
+    
+    @media (max-width: 1300px) {
+        .header-box ul .nav-item .nav-link {
+            font-size: 11px;
+        }
+    }
+    
+    @media (max-width: 1199.98px) {
+        .tob-bar .tob-bar-box .calender-box .calender-date span.date {
+            font-size: 12px;
+        }
+        .btn-style {
+            padding: 9px !important;
+        }
+        .header-box ul.navbar-right .nav-item {
+            margin-left: 10px;
+        }
+    }
+    
+    @media (max-width: 991.98px) {
+        .navbar-below p {
+            font-size: 13px;
+        }
+        .banner-section .tabs-section .tabs-upper h1 {
+            font-size: 20px;
+        }
+        .banner-section .tabs-section .tabs-upper h2 {
+            font-size: 16px;
+        }
+        .copyright-section .copyright-ul {
+            flex-wrap: wrap;
+        }
+        .tob-bar .tob-bar-box .form-control {
+            padding-left: 40px;
+            padding-right: 5px;
+        }
+        .tob-bar .tob-bar-box .calender-box .calender-input {
+            padding-left: 40px;
+            padding-right: 5px;
+        }
+        .dropdown-group .dropdown-select {
+            padding-left: 40px;
+            padding-right: 5px;
+        }
+        .tob-bar .tob-bar-box .form-group .input-group .input-group-icon {
+            padding: 4px 0px;
+            font-size: 21px;
+            left: 11px;
+        }
+        .tob-bar .tob-bar-box .calender-box .calender-input .input-group-icon {
+            padding: 4px 0px;
+            font-size: 21px;
+            left: 11px;
+        }
+        .dropdown-group .dropdown-select .input-group-icon {
+            padding: 4px 0px;
+            font-size: 21px;
+            left: 11px;
+        }
+        .dropdown-group .dropdown::before {
+            font-size: 21px;
+            left: 11px;
+        }
+        .tob-bar .tob-bar-box .form-group {
+            min-width: 166px;
+        }
+        .tob-bar .tob-bar-box .calender-box {
+            min-width: 240px;
+        }
+        .tob-bar .tob-bar-box .form-control {
+            height: 40px;
+        }
+        .tob-bar .tob-bar-box .calender-box {
+            height: 40px;
+        }
+        .tob-bar .tob-bar-box .dropdown-group .dropdown-select {
+            height: 40px;
+        }
+        .tob-bar .tob-bar-box .form-group.top-bar-btn .btn {
+            padding: 7px;
+            height: 40px;
+        }
+        .tob-bar .tob-bar-box .form-group .dropdown-medium .btn-primary {
+            height: 40px;
+        }
+        .dropdown-group .dropdown.dropdown-medium::before {
+            font-size: 28px;
+            left: 27px;
+        }
+        .filter-section .filter-section-box {
+            flex-wrap: wrap;
+        }
+        .columns-section .columns-section-inner {
+            flex-direction: column-reverse;
+        }
+        .columns-section .columns-section-inner .columns-col.left {
+            width: 100%;
+            padding-right: 0px;
+        }
+        .nav-hide {
+            display: none!important;
+        }
+        .mobile-navbar-allign {
+            justify-content: space-between!important;
+            flex-direction: row!important;
+        }
+    }
+    
+    @media (max-width: 890px) {
+        .filter-section {
+            padding: 9px 0px;
+            height: 99px;
+        }
+        .filter-section .filter-section-box .filter-box-inner {
+            flex-wrap: wrap;
+            .dropdown {
+                margin-bottom: 10px;
+            }
+        }
+    }
+    
+    @media (max-width: 850px) {
+        .explore-section.testimonials-section .explore-box.travelers-box .hotel_name {
+            font-size: 20px;
+        }
+        .explore-section.testimonials-section .explore-box.travelers-box .hotel_country {
+            font-size: 16px;
+        }
+        .explore-section.testimonials-section .explore-box.travelers-box .hotel_review p {
+            font-size: 14px;
+        }
+        .explore-section.testimonials-section .explore-box.travelers-box .reviewer {
+            font-size: 13px;
+        }
+        .copyright-section .copyright-ul {
+            li {
+                margin-bottom: 15px;
+            }
+        }
+        .tob-bar .tob-bar-box .form-control {
+            padding-left: 40px;
+            padding-right: 5px;
+        }
+        .tob-bar {
+            max-height: unset;
+            padding: 11px 0;
+        }
+        .tob-bar .tob-bar-box {
+            flex-wrap: wrap;
+        }
+        .columns-section .columns-section-inner .columns-col.right .sort-bar {
+            flex-direction: column!important;
+        }
+        .columns-section .columns-section-inner .columns-col.right .sort-bar .sort-inner {
+            text-align: left;
+            padding: 0px 16px;
+        }
+        .columns-section .columns-section-inner .columns-col.right .sort-bar .sort-inner .dropdown-group .dropdown-select {
+            padding-left: 0px;
+            justify-content: left;
+        }
+        .columns-section .columns-section-inner .columns-col.right .sort-bar .sort-inner:last-child .dropdown-group .dropdown-select {
+            border-radius: 8px 8px 8px 8px;
+            padding: 0px 20px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        body {
+            font-size: 14px;
+        }
+        .banner-section .tabs-section .tabs-lower form .calender-box .calender-date span.date {
+            font-size: 14px;
+        }
+        .banner-section .tabs-section .nav-pills {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        .explore-section .explore-box {
+            margin-bottom: 20px;
+        }
+        .invisible-tob-bar.fixed-header {
+            display: block;
+            max-height: 114px;
+            padding: 9px 0px;
+        }
+    }
+    
+    @media (max-width: 710px) {}
+    
+    @media (max-width: 700px) {
+        .row-footer .col {
+            flex-basis: unset;
+            max-width: 49%;
+            margin-bottom: 20px;
+        }
+        .copyright-section p {
+            font-size: 12px;
+        }
+        .columns-section .columns-section-inner .columns-col.right .listing-card {
+            flex-direction: column;
+            margin-bottom: 25px;
+        }
+        .columns-section .columns-section-inner .columns-col.right .listing-card .listing-image-carousel {
+            width: 100%;
+        }
+        .columns-section .columns-section-inner .columns-col.right .listing-card .listing-content {
+            margin-top: 5px;
+        }
+        .columns-section .columns-section-inner .columns-col.right .listing-card .listing-content .listing-col.left .listing-badges ul li {
+            margin-right: 6px;
+            margin-bottom: 8px;
+        }
+    }
+    
+    @media (max-width: 637px) {}
+    
+    @media (max-width: 600px) {
+        .filter-section {
+            height: 147px;
+        }
+    }
+    
+    @media (max-width: 575.98px) {
+        .row-footer .col {
+            max-width: 100%;
+        }
+        .banner-section .tabs-section .nav-pills li a .icon {
+            font-size: 20px;
+            height: 25px;
+        }
+        .banner-section .tabs-section .nav-pills li a .pill-text {
+            padding-top: 0px;
+            padding-bottom: 8px;
+        }
+        .banner-section .tabs-section .nav-pills li a .pill-text h6 {
+            font-size: 13px;
+        }
+        .banner-section .tabs-section .nav-pills li {
+            padding-top: 10px;
+            width: 100px;
+        }
+        .banner-section .tabs-section .tabs-lower {
+            padding: 32px 25px 32px;
+        }
+        .banner-section .tabs-section .tabs-lower form .booking-btn {
+            bottom: -65px;
+        }
+        .banner-section .tabs-section .tabs-upper {
+            margin-bottom: 20px;
+            top: -100px;
+        }
+        .cancel-alert .cancel-alert-inner {
+            padding: 10px 12px;
+        }
+        .cancel-alert .cancel-alert-inner .cancel-content h6 {
+            font-size: 15px;
+        }
+        .cancel-alert .cancel-alert-inner .cancel-content p {
+            font-size: 13px;
+        }
+        .banner-section .tabs-section .nav-pills {
+            top: 34px;
+        }
+        .columns-section .columns-section-inner .columns-col.right .listing-card .listing-content .listing-col.right .listing-review .listing-review-col.right .rating-number {
+            height: 30px;
+            width: 35px;
+            line-height: 30px;
+            font-size: 19px;
+        }
+        .columns-section .columns-section-inner .columns-col.right .listing-card .listing-content .listing-col.right .listing-review .listing-review-col.left .quality {
+            font-size: 13px;
+            line-height: 15px;
+            margin-bottom: 5px;
+        }
+        .columns-section .columns-section-inner .columns-col.right .listing-card .listing-content .listing-col.right .listing-review .listing-review-col.left .quality.number {
+            font-size: 12px;
+            line-height: 14px;
+        }
+    }
+    
+    @media (max-width: 500px) {
+        .invisible-tob-bar.fixed-header {
+            max-height: 201px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .banner-section .tabs-section .nav-pills li:last-child a span.new {
+            display: none;
+        }
+        .banner-section .tabs-section .tabs-lower form .calender-box .calender-input .input-group-icon {
+            padding: 5px 5px;
+            font-size: 20px;
+        }
+        .banner-section .tabs-section .tabs-lower form .calender-box .calender-input {
+            padding-left: 45px;
+            padding-right: 5px;
+        }
+        .dropdown-group .dropdown-select {
+            padding-left: 45px;
+            padding-right: 5px;
+        }
+        .dropdown-group .dropdown::before {
+            font-size: 25px;
+            left: 15px;
+        }
+        .banner-section .tabs-section .tabs-lower form .form-control {
+            padding-left: 45px;
+            padding-right: 5px;
+        }
+        .banner-section .tabs-section .tabs-lower form .form-group .input-group .input-group-icon {
+            padding: 5px 5px;
+            font-size: 25px;
+        }
+        .dropdown-group .dropdown.dropdown-medium::before {
+            font-size: 25px;
+            left: 15px;
+        }
+        .banner-section .tabs-section .tabs-lower form .form-group .dropdown-medium .btn-primary {
+            font-size: 14px;
+            padding-left: 45px;
+            padding-right: 10px;
+        }
+    }
+    
+    @media (max-width: 450px) {
+        .banner-section .tabs-section .tabs-upper {
+            top: -175px;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        .banner-section .tabs-section .nav-pills li {
+            margin-right: 0px;
+        }
+        .banner-section .tabs-section .tabs-upper h1 {
+            font-size: 16px;
+        }
+        .banner-section .tabs-section .tabs-upper h2 {
+            font-size: 13px;
+        }
+        .filter-section .filter-section-box .filter-box-inner .dropdown button span {
+            font-size: 10px;
+        }
+    }
+    
+    @media (max-width: 350px) {}
+    
+    // mobile first query
+    @media (min-width: 1280px) and (max-width: 1920px) {
+        // .site-container {
+        //     font-size: calc(12px + 4*(100vw - 1280px)/640);
+        // }
+    }
+    
+    @media only screen and (min-width: 768px) {
+        .navbar-nav .dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+        }
+    }

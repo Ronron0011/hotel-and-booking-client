@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="content-language" content="en-us">
+    <title>Mock Project </title>
+    <link rel="stylesheet" th:href="@{/clientCss/bootstrap.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/clientCss/styles.css}" type="text/css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header>
+    <nav>
+        <!-- header-box -->
+        <div style="background-color: #003B95" class="header-box p-3">
+            <div class="container-fluid">
+                <header class="navbar navbar-expand navbar-dark flex-md-row bd-navbar mobile-navbar-allign">
+                    <a class="navbar-brand mr-0 mr-md-2 mr-lg-4" th:href="@{/main}" aria-label="hotel">
+                        <img th:src="@{/clientImg/logos/logo.png}" alt="Mock Project" width="60" height="60">
+                    </a>
+
+                    <div class="navbar-nav-scroll nav-hide">
+                        <ul class="navbar-nav bd-navbar-nav flex-row">
+                            <li class="nav-item">
+                                <a style="color:white;" class="nav-link" th:href="@{/main}">Hotels & Homes</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex navbar-right nav-hide" >
+                        <li>
+                            <div class="navbar-nav-scroll nav-hide">
+                                <ul class="navbar-nav bd-navbar-nav flex-row">
+                                    <li class="nav-item">
+                                        <a style="color:white;" class="nav-link" th:href="@{/booking/booked-rooms}"><i style="font-size: 30px" class="fas fa-shopping-cart"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="/client/main">
+                                <img style="width: 40px; height: 30px;" class="flag-img" th:src="@{/clientImg/country/uk-flag.png}" alt="Booking">
+                            </a>
+                        </li>
+                        <li th:if="${#authentication.principal != null}">
+                            <p style="color: white" class="mb-0" th:text="${#authentication.name}"></p>
+                            <a th:href="@{/show-update/{email}(email=${#authentication.name})}"
+                               class="btn btn-light">Update</a>
+                            <a th:href="@{/logout}" class="btn btn-light">Logout</a>
+                        </li>
+<!--                        <li th:unless="${#authentication.principal != null}" class="nav-item">-->
+<!--                            <a class="nav-link p-2" th:href="@{/client/login}">Sign in</a>-->
+<!--                        </li>-->
+<!--                        <li th:unless="${#authentication.principal != null}" class="nav-item">-->
+<!--                            <a class="nav-link btn-style" th:href="@{/client/show-register-client}">Create Account</a>-->
+<!--                        </li>-->
+                    </ul>
+                    <div class="offcanvas-header">
+                        <button data-trigger="#navbar_main" class="navbar-toggler" type="button"><i
+                                class="fas fa-bars"></i>
+                        </button>
+                        <!-- <h5 class="py-2 mx-auto text-white d-inline mx-auto">Navbar</h5> -->
+                    </div>
+                </header>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="page-wrapper">
+        <div class="content container-fluid" layout:fragment="content">
+        </div>
+    </div>
+</main>
+<footer th:if="${#authentication.principal != null}">
+    <!-- sub-footer-section -->
+<!--    <section class="sub-footer-section destinations-section grey-section">-->
+<!--        <div class="container-fluid">-->
+<!--            <div class="content-contain">-->
+<!--                <div class="row row-footer">-->
+<!--                    <div class="col">-->
+<!--                        <div class="sub-footer-box">-->
+<!--                            <h5>Help</h5>-->
+<!--                            <ul>-->
+<!--                                <li><a>Help center</a></li>-->
+<!--                                <li><a>FAQs</a></li>-->
+<!--                                <li><a>Privacy policy</a></li>-->
+<!--                                <li><a>Cookie policy</a></li>-->
+<!--                                <li><a>Terms of use</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <div class="sub-footer-box">-->
+<!--                            <h5>About us</h5>-->
+<!--                            <ul>-->
+<!--                                <li><a>About us</a></li>-->
+<!--                                <li><a>FAQs</a></li>-->
+<!--                                <li><a>Privacy policy</a></li>-->
+<!--                                <li><a>Cookie policy</a></li>-->
+<!--                                <li><a>Terms of use</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <div class="sub-footer-box">-->
+<!--                            <h5>Destinations</h5>-->
+<!--                            <ul>-->
+<!--                                <li><a>Help center</a></li>-->
+<!--                                <li><a>FAQs</a></li>-->
+<!--                                <li><a>Privacy policy</a></li>-->
+<!--                                <li><a>Cookie policy</a></li>-->
+<!--                                <li><a>Terms of use</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <div class="sub-footer-box">-->
+<!--                            <h5>Partner with us</h5>-->
+<!--                            <ul>-->
+<!--                                <li><a>Help center</a></li>-->
+<!--                                <li><a>FAQs</a></li>-->
+<!--                                <li><a>Privacy policy</a></li>-->
+<!--                                <li><a>Cookie policy</a></li>-->
+<!--                                <li><a>Terms of use</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col">-->
+<!--                        <div class="sub-footer-box">-->
+<!--                            <h5>Get the app</h5>-->
+<!--                            <ul>-->
+<!--                                <li><a>iOS app</a></li>-->
+<!--                                <li><a>Android app</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    &lt;!&ndash; sub-footer-section &ndash;&gt;-->
+
+    <!-- copyright-section -->
+    <section class="copyright-section">
+        <div class="container-fluid">
+            <div class="content-contain">
+                <div class="text-center copyrights-text">
+                    <p class="copyrights-info">All material herein © 2022–2023 Mock Project Pte. Ltd. All Rights
+                        Reserved.</p>
+                    <p class="copyrights-info">Mock Project is part of Booking Holdings Inc., the world leader in online travel
+                        &amp; related services.</p>
+                </div>
+<!--                <ul class="copyright-ul">-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img th:src="@{/clientImg/logos/logo.png}" alt="" width="30" height="30">-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img th:src="@{/clientImg/logos/logo.png}" alt="" width="30" height="30">-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img th:src="@{/clientImg/logos/logo.png}" alt="" width="30" height="30">-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img th:src="@{/clientImg/logos/logo.png}" alt="" width="30" height="30">-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img th:src="@{/clientImg/logos/logo.png}" alt="" width="30" height="30">-->
+
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="">-->
+<!--                            <img th:src="@{/clientImg/logos/logo.png}" alt="" width="30" height="30">-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+
+                <div class="text-center copyrights-text">
+                    <p class="copyrights-info">©2021</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- copyright-section -->
+</footer>
+<!-- entry-box -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossOrigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+<script th:src="@{/clientJs/jquery.min.js}" type="text/javascript "></script>
+<script th:src="@{/clientJs/jquery.matchHeight.js} " type="text/javascript "></script>
+<script th:src="@{/clientJs/owl.carousel.js}" type="text/javascript "></script>
+<script th:src="@{/clientJs/bootstrap.bundle.js} " type="text/javascript "></script>
+<script th:src="@{/clientJs/main.js}" type="text/javascript "></script>
+
+<script>
+    $(document).ready(function(){
+        $('.plus-people').click(function(e){
+
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var people = parseInt($('#people').val());
+
+            // If is not undefined
+
+            if(people>=1 && people<20) {
+                $('#people').val(people + 1);
+            }
+
+            // Increment
+
+        });
+
+        $('.minus-people').click(function(e){
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var people = parseInt($('#people').val());
+
+            // If is not undefined
+
+            // Increment
+            if(people>1 && people<=20){
+                $('#people').val(people - 1);
+            }
+        });
+
+        $('.plus-room').click(function(e){
+
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var room = parseInt($('#room').val());
+
+            // If is not undefined
+
+            if(room>=1 && room<20) {
+                $('#room').val(room + 1);
+            }
+
+            // Increment
+
+        });
+
+        $('.minus-room').click(function(e){
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var room = parseInt($('#room').val());
+
+            // If is not undefined
+
+            // Increment
+            if(room>1 && room<=20){
+                $('#room').val(room - 1);
+            }
+        });
+    });
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="content-language" content="en-us">
+    <title>Mock Project </title>
+    <link rel="stylesheet" th:href="@{/clientCss/bootstrap.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/clientCss/styles.css}" type="text/css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-color: #ffe6e6; /* Light pink background */
+        }
+
+        .login-container {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container label,
+        .login-container input {
+            color: red;
+        }
+
+        .btn-outline-light:hover {
+            background-color: lightblue;
+        }
+
+        .text-white-50 {
+            color: black;
+        }
+
+        /* Modified styles for links */
+        .login-links a {
+            color: blue !important;
+        }
+    </style>
+</head>
+
+<body>
+<div class="site-container">
+
+    <!-- end of header-box -->
+</div>
+<!-- entry-box -->
+<div class="container py-5 h-100" >
+    <div class="row d-flex mt-5 justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card login-container">
+                <div class="card-body p-5 text-center">
+                    <div class="mb-md-2 mt-md-4 pb-5">
+                        <div th:if="${success != null}">
+                            <p style="color: green" th:text="${success}"></p>
+                        </div>
+                        <h2 class="fw-bold mb-4" style="color: black;">Login</h2>
+
+                        <form   th:action="@{/login}"  method="post" th:object="${login}"  >
+                            <div th:if="${param.error}">
+                                <p>Email or Password is not correct</p>
+                            </div>
+                            <div class="mb-3">
+                                <input th:field="*{email}" type="email" id="typeEmailX" class="form-control form-control-lg"
+                                       placeholder="Email"/>
+                                <div id="emailError" style="color: red; display: none;">Please enter email</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <input th:field="*{password}" type="password" id="typePasswordX" class="form-control form-control-lg"
+                                       placeholder="Password"/>
+                                <div id="passwordError" style="color: red; display: none;">Please enter password</div>
+                            </div>
+                            <button class="btn btn-primary btn-lg" type="submit">Login</button>
+                            <div id="bothError" style="color: red; display: none;">Please enter your email and
+                                password
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div class="mb-3 login-links">
+                        <p class="mb-0"><a th:href="@{/register}" class="text-white-50 fw-bolder">Don't have an account? Register</a>
+                        </p>
+<!--                        <p class="mb-0"><a href="#" class="text-white-50 fw-bolder">Forgot Password?</a></p>-->
+                    </div>
+
+<!--                    <div class="mt-4">-->
+<!--                        <p class="mb-0" style="color: black;">Or login with:</p>-->
+<!--                        <a href="#" class="btn btn-outline-primary btn-lg mt-3">-->
+<!--                            <i class="fab fa-facebook"></i> Login with Facebook-->
+<!--                        </a>-->
+<!--                        <a href="#" class="btn btn-outline-danger btn-lg mt-3">-->
+<!--                            <i class="fab fa-google"></i> Login with Google-->
+<!--                        </a>-->
+<!--                    </div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

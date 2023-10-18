@@ -1,0 +1,166 @@
+/* Color overrides*/
+
+$brand-primary-pink: #ff567d;
+$brand-blue:rgb(83, 146, 249);
+$brand-blue-hover:#75a8f9;
+$primary-black:#000;
+$primary-black-lighter: rgba(0, 0, 0, .75);
+$grey--primary: #eee;
+$grey--primary-lighter:#f8f7f9;
+$brand-primary-yellow: #FBBB12;
+$primary-white: #fff;
+
+/*general font*/
+
+$general-font-large:18px;
+$general-font: 17px;
+$normal-font-size: 16px;
+$mobile-font-size: 14px;
+$sm-font-size: 12px;
+body {
+    font-weight: normal;
+    font-style: normal;
+}
+
+.content-contain {
+    max-width: 1124px;
+    margin: 0 auto;
+}
+
+.content-contain-wider {
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
+
+/*Path to assets*/
+
+$path--rel: "../img";
+@mixin backgroundImage($position:center, $repeat: no-repeat, $size:cover) {
+    background: {
+        position: $position;
+        repeat: $repeat;
+        size: $size;
+    }
+}
+
+@mixin background-image($img, $background-position, $background-color) {
+    background-image: url('#{$path--rel}/#{$img}');
+    background-repeat: no-repeat;
+    background-position: $background-position;
+    background-color: $background-color;
+}
+
+@mixin BorderRadius {
+    -webkit-border-radius: 30px !important;
+    -moz-border-radius: 30px !important;
+    border-radius: 30px !important;
+}
+
+@mixin BorderRadiusRound {
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+@mixin letter-spacing () {
+    letter-spacing: 1.5px;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: $brand-blue-hover;
+    border-color: $brand-blue-hover;
+}
+
+.btn-style {
+    background-color: $primary-white;
+    border: 1px solid $brand-blue;
+    padding: 12px!important;
+    color: $brand-blue !important;
+    border-radius: 8px !important;
+    &.btn-pink {
+        background-color: $primary-white;
+        border: 1px solid $brand-primary-pink;
+        color: $brand-primary-pink!important;
+        &:hover {
+            background-color: $brand-primary-pink;
+            border-color: $brand-primary-pink;
+            color: $primary-white!important;
+        }
+        &:focus {
+            background-color: $brand-primary-pink!important;
+            border-color: $brand-primary-pink!important;
+            color: $primary-white!important;
+        }
+        &:active {
+            background-color: $brand-primary-pink!important;
+            border-color: $brand-primary-pink!important;
+            color: $primary-white!important;
+        }
+    }
+    &:hover {
+        background-color: $brand-blue;
+        border-color: $brand-blue;
+        color: $primary-white!important;
+    }
+    &:focus {
+        background-color: $brand-blue;
+        border-color: $brand-blue;
+        color: $primary-white!important;
+    }
+    &:active {
+        background-color: $brand-blue;
+        border-color: $brand-blue;
+        color: $primary-white!important;
+    }
+}
+
+.btn-style-site {
+    background-color: $brand-blue;
+    border: 1px solid $brand-blue;
+    color: $primary-white !important;
+    border-radius: 8px !important;
+    min-width: 180px;
+    font-family: 'Poppins';
+    box-shadow: 0px 4px 31px rgba(0, 0, 0, 0.15);
+    &:hover {
+        opacity: 0.6;
+    }
+    &:focus {
+        opacity: 0.6;
+    }
+    &:active {
+        background-color: $brand-blue!important;
+        border-color: $brand-blue!important;
+        color: $primary-white !important;
+        opacity: 0.6;
+    }
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.form-control-select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    background-image: url('../img/background-img/dropdown-img.png');
+    background-position: 94.4% center;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.site-container {
+    margin: 0 auto;
+}
+
+.grey-container {
+    background-color: #F9FAFC;
+    min-height: 100vh;
+}

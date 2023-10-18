@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/booking-main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Booking Project</title>
+</head>
+<body>
+<div class="site-container" layout:fragment="content">
+    <!-- tob-bar -->
+    <div class="tob-bar invisible-tob-bar">
+        <div class="container-fluid">
+            <div class="content-contain">
+                <form>
+                    <div class="tob-bar-box">
+                        <div class="form-group mb-2 mb-md-0 mr-2">
+                            <div class="input-group add-on">
+                                <div class="input-group-icon">
+                                    <i class="icons icon-search"></i>
+                                </div>
+                                <input class="form-control" placeholder="TP Ho Chi Minh" name="search-input"
+                                       id="search-input" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-2 mb-md-0 mr-2">
+                            <div class="calender-box">
+                                <div class="calender-input">
+                                    <div class="calender-input">
+                                        <div class="input-group-icon">
+                                            <i class="icons icon-calendar"></i>
+                                        </div>
+                                        <input type="date">
+                                        <div class="calender-date">
+                                        </div>
+                                    </div>
+                                    <div class="calender-input">
+                                        <div class="input-group-icon">
+                                            <i class="icons icon-calendar"></i>
+                                        </div>
+                                        <input type="date">
+                                        <div class="calender-date ">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group dropdown-group mb-2 mb-md-0 mr-2">
+                            <div class="dropdown keep-inside-clicks-open dropdown-medium">
+                                <button class="btn btn-primary" type="button" data-toggle="dropdown"><span><span
+                                        class="adult-total">0</span> Adults,</span> <span class="children-span"> <span
+                                        class="child-total">0</span> Children</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <span class="minus-adult subtract"><i class="fas fa-minus"></i></span>
+                                        <span class="adult-total">0</span> Adults
+                                        <span class="add-adult addition"><i class="fas fa-plus"></i></span>
+                                    </li>
+                                    <li>
+                                        <span class="minus-child subtract"><i class="fas fa-minus"></i></span>
+                                        <span class="child-total">0</span> Children
+                                        <span class="add-child addition"><i class="fas fa-plus"></i></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group top-bar-btn">
+                            <a th:href="@{/hotel/listing.html}">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </a>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end of tob-bar -->
+
+
+
+    <section class="banner-section">
+
+        <div class="container-fluid">
+            <!-- tabs-section -->
+            <div class="tabs-section content-contain mx-auto text-center">
+                <ul class="nav nav-pills">
+                    <li class="">
+                        <a class="active" data-toggle="pill" href="#flamingo" role="tab" aria-controls="pills-flamingo"
+                           aria-selected="true">
+                            <div class="icon"><i class="fas fa-building"></i></div>
+                            <div class="pill-text">
+                                <h6>Hotels & Homes</h6>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content mt-3">
+                    <div class="tab-pane fade show active" id="flamingo" role="tabpanel" aria-labelledby="flamingo-tab">
+                        <div class="tabs-upper text-center">
+                            <h1>FOUR WAYS, STILL "LOVED" PRICE</h1>
+                        </div>
+                        <div class="tabs-lower">
+<!--                            <form th:action="@{/hotel/search-hotel}"  method="get">-->
+<!--                                <input type="text" name="keyword" placeholder="Keyword">-->
+<!--                                <input type="text" name="filter" placeholder="Filter">-->
+<!--                                <input type="date" name="checkin" placeholder="Check-in Date">-->
+<!--                                <input type="date" name="checkout" placeholder="Check-out Date">-->
+<!--                                <input type="number" name="people" placeholder="Number of People">-->
+<!--                                <input type="number" name="room" placeholder="Number of Rooms">-->
+<!--                                <button type="submit">Search</button>-->
+<!--                            </form>-->
+
+                            <form th:action="@{/hotel/search-hotel}" method="get">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" placeholder="Search" name="keyword" id="srch-term" type="text">
+                                                <span class="input-group-text ml-5" id="basic-addon2">Filter</span>
+                                                <div class="input-group-append">
+                                                    <select name="filter" class="form-control p-0 text-center">
+                                                        <option value="hotelName">Hotel Name</option>
+                                                        <option value="address">Address</option>
+                                                        <option value="city">City</option>
+                                                        <option value="country">Country</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pr-md-2">
+                                        <div class="form-group mb-md-0">
+                                            <label for="check-in-date">Check-in Date</label>
+                                            <input type="date" id="check-in-date" name="checkin"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-md-2">
+                                        <div class="form-group mb-md-0">
+                                            <label for="check-out-date">Check-out Date</label>
+                                            <input type="date" id="check-out-date" name="checkout"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pr-md-2">
+                                        <div class="form-group dropdown-group mb-md-0">
+                                            <div class=" keep-inside-clicks-open dropdown-medium">
+                                                <div class="btn btn-primary d-flex align-items-center" type="submit" data-toggle="dropdown">
+<!--                                                    <span><input class="adult-total" name="people">Adults,</span>-->
+                                                    <span>
+                                                        <button class="minus-people bg-white border-0">
+                                                          -
+                                                        </button>
+                                                        <input class="border-0 p-0 text-right" type="number" id="people" name="people" value="2" min="1" max="20" step="1"/>
+                                                        <button class="plus-people bg-white border-0">
+                                                            +
+                                                        </button>
+                                                        Adult(s)
+                                                    </span>
+                                                </div>
+<!--                                                <ul class="dropdown-menu">-->
+<!--                                                    <li>-->
+<!--                                                        <span class="minus-adult subtract"><i class="fas fa-minus"></i></span>-->
+<!--                                                        <span class="adult-total">0</span> Adults-->
+<!--                                                        <span class="add-adult addition"><i-->
+<!--                                                                class="fas fa-plus"></i></span>-->
+<!--                                                    </li>-->
+<!--                                                    <li>-->
+<!--                                                        <span class="minus-child subtract"><i class="fas fa-minus"></i></span>-->
+<!--                                                        <span class="child-total">0</span> Children-->
+<!--                                                        <span class="add-child addition"><i-->
+<!--                                                                class="fas fa-plus"></i></span>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pr-md-2">
+                                        <div class="form-group dropdown-group mb-md-0">
+                                            <div class=" keep-inside-clicks-open dropdown-medium">
+                                                <div class="btn btn-primary d-flex align-items-center" type="submit" data-toggle="dropdown">
+<!--                                                    <span><input class="room-total" name="room">     Room(s)</span>-->
+                                                    <span>
+                                                        <button class="minus-room bg-white border-0">
+                                                          -
+                                                        </button>
+                                                        <input class="border-0 p-0 text-right" type="number" id="room" value="1" min="1" max="20" step="1" name="room" />
+                                                        <button class="plus-room bg-white border-0">
+                                                            +
+                                                        </button>
+                                                        Room(s)
+                                                    </span>
+                                                </div>
+<!--                                                <ul class="dropdown-menu">-->
+<!--                                                    <li>-->
+<!--                                                        <span class="minus-room subtract"><i-->
+<!--                                                                class="fas fa-minus"></i></span>-->
+<!--                                                        <span class="room-total">1</span> Room-->
+<!--                                                        <span class="add-room addition"><i-->
+<!--                                                                class="fas fa-plus"></i></span>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="booking-btn">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="cuckoo" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tabs-upper text-center">
+                            <h1>HOTELS, RESORTS, HOSTELS & MORE</h1>
+                            <h2>Get the best prices on 2,000,000+ properties, worldwide</h2>
+                        </div>
+                        <div class="tabs-lower">
+                            <form>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="input-group add-on">
+                                                <div class="input-group-icon">
+                                                    <i class="icons icon-search"></i>
+                                                </div>
+                                                <input class="form-control" placeholder="Thành phố bạn muốn đến"
+                                                       name="srch-term" id="srch-term3" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 pr-md-2">
+                                        <div class="form-group mb-sm-0">
+                                            <div class="calender-box">
+                                                <div class="calender-input">
+                                                    <div class="input-group-icon">
+                                                        <i class="icons icon-calendar"></i>
+                                                    </div>
+                                                    <input type="date">
+                                                    <div class="calender-date">
+
+                                                    </div>
+                                                </div>
+                                                <div class="calender-input">
+                                                    <div class="input-group-icon">
+                                                        <i class="icons icon-calendar"></i>
+                                                    </div>
+                                                    <input type="date">
+                                                    <div class="calender-date ">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-md-2">
+                                        <div class="form-group dropdown-group mb-sm-0">
+
+                                            <div class="dropdown">
+                                                <button class="dropdown-select" type="button" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">
+                                                    <div class="input-group-icon"></div>
+                                                    <div>
+                                                        2 adults
+                                                    </div>
+                                                    <!-- <span class="caret"></span> -->
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                                    <li>Option 1</li>
+                                                    <li>Option 2</li>
+                                                    <li>Option 3</li>
+                                                    <li>Option 4</li>
+                                                    <li>Option 5</li>
+                                                    <li>Option 6</li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="booking-btn">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="ostrich" role="tabpanel" aria-labelledby="ostrich-tab">
+                        <div class="tabs-upper text-center">
+                            <h1>HOTELS, RESORTS, HOSTELS & MORE</h1>
+                            <h2>More spacious. More local. More of why you travel.</h2>
+                        </div>
+                        <div class="tabs-lower">
+                            <form>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="input-group add-on">
+                                                <div class="input-group-icon">
+                                                    <i class="icons icon-search"></i>
+                                                </div>
+                                                <input class="form-control" placeholder="Thành phố bạn muốn đến"
+                                                       name="srch-term" id="srch-term4" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 pr-md-2">
+                                        <div class="form-group mb-sm-0">
+                                            <div class="calender-box">
+                                                <div class="calender-input">
+                                                    <div class="input-group-icon">
+                                                        <i class="icons icon-calendar"></i>
+                                                    </div>
+                                                    <input type="date">
+                                                    <div class="calender-date">
+
+                                                    </div>
+                                                </div>
+                                                <div class="calender-input">
+                                                    <div class="input-group-icon">
+                                                        <i class="icons icon-calendar"></i>
+                                                    </div>
+                                                    <input type="date">
+                                                    <div class="calender-date ">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-md-2">
+                                        <div class="form-group dropdown-group mb-sm-0">
+
+                                            <div class="dropdown">
+                                                <button class="dropdown-select" type="button" data-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false">
+                                                    <div class="input-group-icon"></div>
+                                                    <div>
+                                                        2 adults
+                                                    </div>
+                                                    <!-- <span class="caret"></span> -->
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                                    <li>Option 1</li>
+                                                    <li>Option 2</li>
+                                                    <li>Option 3</li>
+                                                    <li>Option 4</li>
+                                                    <li>Option 5</li>
+                                                    <li>Option 6</li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="booking-btn">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- tabs-section -->
+        </div>
+
+    </section>
+    <!-- banner-section -->
+
+    <!-- cancel-alert -->
+    <section class="cancel-alert">
+        <div class="container-fluid">
+            <div class="content-contain">
+                <div class="cancel-alert-inner d-flex flex-row align-items-center">
+                    <div class="img-holder">
+                        <img th:src="@{/clientImg/content-img/easy-cancel.png}" alt="easy cancel">
+                    </div>
+                    <div class="cancel-content">
+                        <h6 class="cancel-title">EasyCancel</h6>
+                        <p class="text">
+                            Not sure about your travel plans? Look for the EasyCancel badge to find hotels offering free
+                            cancellation on select rooms up to the day before check-in. See your chosen room's
+                            cancellation policy for more details.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of cancel-alert -->
+
+    <!-- Explore-section -->
+<!--    <section class="explore-section">-->
+<!--        <div class="container-fluid">-->
+<!--            <div class="content-contain">-->
+<!--                <div class="explore-title">-->
+<!--                    <h3>Explore more travel vacation rentals</h3>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col-sm-6 col-md-3 pr-md-2">-->
+<!--                        <a class="explore-box" th:href="@{/hotel/listing.html}">-->
+<!--                            <div class="image-box">-->
+<!--                                <img th:src="@{/clientImg/content-img/img-1.jpg}" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="exlore-text">-->
+<!--                                <p class="title">Apartments</p>-->
+<!--                                <p class="number">156,786 properties</p>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                    <div class="col-sm-6 col-md-3 px-md-2">-->
+<!--                        <a class="explore-box" th:href="@{/hotel/listing.html}">-->
+<!--                            <div class="image-box">-->
+<!--                                <img th:src="@{/clientImg/content-img/img-2.jpg}" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="exlore-text">-->
+<!--                                <p class="title">Villas</p>-->
+<!--                                <p class="number">156,786 properties</p>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                    <div class="col-sm-6 col-md-3 px-md-2">-->
+<!--                        <a class="explore-box" th:href="@{/hotel/listing.html}">-->
+<!--                            <div class="image-box">-->
+<!--                                <img th:src="@{/clientImg/content-img/img-3.jpg}" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="exlore-text">-->
+<!--                                <p class="title">Vacation Rentals</p>-->
+<!--                                <p class="number">156,786 properties</p>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                    <div class="col-sm-6 col-md-3 pl-md-2">-->
+<!--                        <a class="explore-box" th:href="@{/hotel/listing.html}">-->
+<!--                            <div class="image-box">-->
+<!--                                <img th:src="@{/clientImg/content-img/img-4.jpg}" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="exlore-text">-->
+<!--                                <p class="title">Bungalows</p>-->
+<!--                                <p class="number">156,786 properties</p>-->
+<!--                            </div>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    &lt;!&ndash; end of Explore-section &ndash;&gt;-->
+
+<!--    &lt;!&ndash; Explore-section &ndash;&gt;-->
+<!--    <section class="explore-section testimonials-section">-->
+<!--        <div class="container-fluid">-->
+<!--            <div class="content-contain-wider">-->
+<!--                <div class="explore-title">-->
+<!--                    <h3>Overheard from travelers</h3>-->
+<!--                </div>-->
+<!--                <div class="row">-->
+<!--                    <div class="col-sm-6 col-md-4 pr-md-2">-->
+<!--                        <a class="explore-box travelers-box text-center match-height" href="">-->
+<!--                            <p class="hotel_name">Heritage Hotel</p>-->
+<!--                            <p class="hotel_country">in the Philippines</p>-->
+<!--                            <div class="hotel_review">-->
+<!--                                <p>-->
+<!--                                    "We got a great last minute rate with and this room was spacious with a comfortable-->
+<!--                                    and warm bed."-->
+<!--                                </p>-->
+<!--                            </div>-->
+<!--                            <p class="reviewer">- Henry from Australia</p>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                    <div class="col-sm-6 col-md-4 px-md-2">-->
+<!--                        <a class="explore-box travelers-box text-center match-height" href="">-->
+<!--                            <p class="hotel_name">Fairmont Singapore</p>-->
+<!--                            <p class="hotel_country">in the Singapore</p>-->
+<!--                            <div class="hotel_review">-->
+<!--                                <p>-->
+<!--                                    "The hotel was simple amazing and I couldn't thank Agoda more for helping out. I've-->
+<!--                                    been a customer for awhile and I have to say it's probably my favourite app!"-->
+<!--                                </p>-->
+<!--                            </div>-->
+<!--                            <p class="reviewer">- Malvin from Singapore</p>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                    <div class="col-sm-6 col-md-4 pl-md-2">-->
+<!--                        <a class="explore-box travelers-box text-center match-height" href="">-->
+<!--                            <p class="hotel_name">Novotel Rotorua Lakeside Hotel</p>-->
+<!--                            <p class="hotel_country">in the Philippines</p>-->
+<!--                            <div class="hotel_review">-->
+<!--                                <p>-->
+<!--                                    "Started with stress, ended with joy. Thanks Agoda."-->
+<!--                                </p>-->
+<!--                            </div>-->
+<!--                            <p class="reviewer">- Andrew from Kenya</p>-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    &lt;!&ndash; end of Explore-section &ndash;&gt;-->
+
+
+    <!-- destinations-section -->
+    <section class="explore-section destinations-section">
+        <div class="container-fluid">
+            <div class="content-contain">
+                <div class="explore-title">
+                    <h3>Popular destinations outside Kenya</h3>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="destination-inner">
+                            <div class="destination-carousel owl-carousel owl-theme">
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-1.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">Dubai</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-2.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">Nairobi</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-3.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">Kuala Lumpur</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-4.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">London</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-5.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">New York</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-6.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">San Fransisco</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-7.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">Berlin</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-8.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">Manchester</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-9.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">Tokyo</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-1.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">Qatar</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a class="destinations-item" href="">
+                                        <div class="img-holder">
+                                            <img th:src="@{/clientImg/city/img-2.jpg}" alt="">
+                                        </div>
+                                        <div class="destination-text">
+                                            <p class="destination-city">Shanghai</p>
+                                            <p class="destination-places">11,052 accommodations</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of destinations-section -->
+</div>
+<script th:src="@{/js/index.js}"></script>
+<script>
+    $("input[type='number']").inputSpinner()
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/booking-main}">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Booking Project</title>
+</head>
+<body>
+<div class="site-container" layout:fragment="content">
+<!--        &lt;!&ndash; header-box &ndash;&gt;-->
+<!--        <div class="header-box">-->
+<!--            <div class="container-fluid">-->
+<!--                <header class="navbar navbar-expand navbar-dark flex-md-row bd-navbar mobile-navbar-allign">-->
+<!--                    <a class="navbar-brand mr-0 mr-md-2 mr-lg-4" href="/" aria-label="agoda">-->
+<!--                        <img th:src="@{/clinetImg/logos/logo.png}" alt="Agoda Bookings" width="100" height="100">-->
+<!--                    </a>-->
+
+<!--                    <div class="navbar-nav-scroll nav-hide">-->
+<!--                        <ul class="navbar-nav bd-navbar-nav flex-row">-->
+<!--                            <li class="nav-item">-->
+<!--                                <a class="nav-link" href="/">Hotels & Homes</a>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item">-->
+<!--                                <a class="nav-link">Flights</a>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item">-->
+<!--                                <a class="nav-link " href="/">Airport Transfer</a>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item">-->
+<!--                                <a class="nav-link" href="/">Today's deals</a>-->
+<!--                            </li>-->
+
+<!--                            <li class="nav-item">-->
+<!--                                <a class="nav-link" href="/"><i class="fas fa-warehouse"></i>Apartments</a>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item dropdown">-->
+<!--                                <a class="nav-link dropdown-toggle caret-off" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                    <i class="fas fa-ellipsis-h"></i>-->
+<!--                                </a>-->
+<!--                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                                    <a class="dropdown-item" href="#">Car Rental</a>-->
+<!--                                    <a class="dropdown-item" href="#">Another action</a>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+
+<!--                    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex navbar-right nav-hide">-->
+
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link btn-style btn-pink" href="">List your place</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link p-2" href="">-->
+<!--                                <img class="flag-img"th:src="@{/clientImg/country/uk-flag.png}" alt="">-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link p-2" href="/">Sign in</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item">-->
+<!--                            <a class="nav-link btn-style" href="">Create Account</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <div class="offcanvas-header">-->
+<!--                        <button data-trigger="#navbar_main" class="navbar-toggler" type="button"><i class="fas fa-bars"></i></button>-->
+<!--                        &lt;!&ndash; <h5 class="py-2 mx-auto text-white d-inline mx-auto">Navbar</h5> &ndash;&gt;-->
+<!--                    </div>-->
+<!--                </header>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; end ofheader-box &ndash;&gt;-->
+
+        <!-- Mobile Nav -->
+        <b class="screen-overlay"></b>
+
+        <nav id="navbar_main" class="mobile-offcanvas navbar fixed-top navbar-expand-lg navbar-light">
+            <div class="container nav-cont">
+                <a class="navbar-brand d-none d-lg-block" href="#">Navbar</a>
+                <div class="offcanvas-header">
+                    <button class="navbar-toggler btn-close"><i class="fas fa-times"></i></button>
+                    <!-- <h5 class="py-2 mx-auto text-white d-inline mx-auto">Navbar</h5> -->
+                </div>
+                <ul class="navbar-nav mobile-ul">
+                    <li class="nav-item"> <a class="nav-link" href="">Sign In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Create Account</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">List your PLace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Hotels $ Homes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Airport Transfer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Today's deals</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+        <!-- End of Mobile Nav -->
+
+        <!-- tob-bar -->
+        <div class="tob-bar pt-3">
+            <div class="container-fluid">
+                <div class="content-contain">
+                    <form th:action="@{/hotel/search-hotel}" method="get">
+                        <div class="tob-bar-box">
+                            <div class="form-group mb-2 mb-md-0 mr-2 d-flex">
+                                <div class="input-group add-on">
+                                    <div class="input-group-icon pb-2">
+                                        <i class="icons icon-search"></i>
+                                    </div>
+                                    <input class="form-control pl-5" th:value="${keyword}" name="keyword" id="srch-term" type="text">
+                                </div>
+                                <div class="input-group add-on ml-2">
+                                    <select th:value="${filter}" name="filter" class="form-control text-center h-75">
+                                        <option value="hotelName">Hotel Name</option>
+                                        <option value="address">Address</option>
+                                        <option value="city">City</option>
+                                        <option value="country">Country</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-2 mb-md-0 mr-2">
+                                <div class="calender-box">
+                                    <div class="calender-input">
+                                        <div class="input-group-icon">
+                                            <i class="icons icon-calendar"></i>
+                                        </div>
+                                        <div class="calender-date">
+                                            <input th:value="${checkin}" type="date" id="check-in-date" name="checkin"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="calender-input">
+                                        <div class="input-group-icon">
+                                            <i class="icons icon-calendar"></i>
+                                        </div>
+                                        <div class="calender-date ">
+                                            <input th:value="${checkout}" type="date" id="check-out-date" name="checkout"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group dropdown-group mb-2 mb-md-0 mr-2">
+                                <div class="dropdown keep-inside-clicks-open dropdown-medium">
+                                    <button class="btn btn-primary" type="button" data-toggle="dropdown">
+                                        <div class="pl-2">
+                                            <span><span class="people-total" id="peopleTotal" th:text="${people}"></span> Adult(s),</span>
+                                            <span class="room-span"> <span class="room-total" id="roomTotal" th:text="${room}"></span> Room(s)</span>
+                                        </div>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <input class="border-0 p-0 text-right" type="number" id="people" name="people" th:value="${people}" min="1" max="20" step="1"/> Adult(s)
+                                        </li>
+                                        <li>
+                                            <input class="border-0 p-0 text-right" type="number" id="room" th:value="${room}" min="1" max="20" step="1" name="room" /> Room(s)
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group top-bar-btn">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end of tob-bar -->
+
+<!--        <section class="filter-section">-->
+<!--            <div class="container-fluid">-->
+<!--                <div class="content-contain">-->
+<!--                    <div class="filter-section-box">-->
+<!--                        <div class="filter-box-inner">-->
+<!--                            <p class="filter-text mr-1 mr-sm-2">Filter:</p>-->
+<!--                            <div class="dropdown mr-1">-->
+<!--                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                    <i class="fas fa-tag"></i><span>Your Budget</span>-->
+<!--                                    -->
+<!--                                </button>-->
+<!--                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                                    <a class="dropdown-item" href="#">Action</a>-->
+<!--                                    <a class="dropdown-item" href="#">Another action</a>-->
+<!--                                    <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="dropdown mr-1">-->
+<!--                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                    <i class="fas fa-star"></i><span>Stars</span>-->
+<!--                                </button>-->
+<!--                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                                    <a class="dropdown-item" href="#">Action</a>-->
+<!--                                    <a class="dropdown-item" href="#">Another action</a>-->
+<!--                                    <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="dropdown mr-1">-->
+<!--                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                    <i class="fas fa-street-view"></i><span>Location</span>-->
+<!--                                </button>-->
+<!--                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                                    <a class="dropdown-item" href="#">Action</a>-->
+<!--                                    <a class="dropdown-item" href="#">Another action</a>-->
+<!--                                    <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="dropdown mr-1">-->
+<!--                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                                    <span>More</span>-->
+<!--                                </button>-->
+<!--                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--                                    <a class="dropdown-item" href="#">Action</a>-->
+<!--                                    <a class="dropdown-item" href="#">Another action</a>-->
+<!--                                    <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="search-box">-->
+<!--                            <div class="search-box-inner">-->
+<!--                                <form>-->
+<!--                                    <div class="form-group has-search mb-0">-->
+<!--                                        <span class="fa fa-search form-control-feedback"></span>-->
+<!--                                        <input type="text" class="form-control" placeholder="What are you looking for?">-->
+<!--                                    </div>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--        &lt;!&ndash; filter-section &ndash;&gt;-->
+
+        <section class="columns-section">
+            <div class="container-fluid">
+                <div class="content-contain">
+                    <div class="columns-section-inner">
+                        <div class="columns-col left">
+                            <div class="map-container">
+                                <div class="img-holder">
+                                    <img th:src="@{/clientImg/content-img/property-map-entry-1.svg}" alt="">
+                                </div>
+                                <div class="map-text">
+                                    SEE MAP VIEW
+                                </div>
+                            </div>
+                            <!-- map-container -->
+
+                            <div class="preference-card">
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <i class="fas fa-warehouse"></i>
+                                            <span class="text">Private stays</span>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <i class="fas fa-mug-hot"></i>
+                                            <span class="text">Book without credit card</span>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <i class="fas fa-user-friends"></i>
+                                            <span class="text">I want free breakfast</span>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <i class="far fa-credit-card"></i>
+                                            <span class="text">Book without credit card</span>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- preference-card -->
+<!--                            <h6 class="topic-text">Based on properties you've viewed, you might like:</h6>-->
+<!--                            <a class="Recommended-Property-Card">-->
+<!--                                <div class="recommended-col left" style="background-image: url(/clientImg/places/img-5.jpg);">-->
+<!--                                </div>-->
+<!--                                <div class="recommended-col right">-->
+<!--                                    <p class="recommended-title">The Quarter Phromphong </p>-->
+<!--                                    <div class="recommended-starrating">-->
+<!--                                        <div class="stars-box">-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="listing-review">-->
+<!--                                        <div class="listing-review-col right pr-2">-->
+<!--                                            <span class="rating-number">-->
+<!--                                                  7.7-->
+<!--                                              </span>-->
+<!--                                        </div>-->
+<!--                                        <div class="listing-review-col left">-->
+<!--                                            <span class="quality">Exceptional</span>-->
+<!--                                            <span class="quality number">285 reviews</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="listing-review">-->
+<!--                                        <div class="listing-review-col left green">-->
+<!--                                            <span class="quality">93% Match for you!</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="recommended-prices text-right">-->
+<!--                                        <p class="extras">Price per night as low as</p>-->
+<!--                                        <div class="recommended-prices-inner">-->
+<!--                                            <span class="amount">$27</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash; Recommended-Property-Card &ndash;&gt;-->
+<!--                            <a class="Recommended-Property-Card">-->
+<!--                                <div class="recommended-col left" style="background-image: url(/clientImg/places/img-3.jpg);">-->
+
+<!--                                </div>-->
+<!--                                <div class="recommended-col right">-->
+<!--                                    <p class="recommended-title">The Quarter Phromphong </p>-->
+<!--                                    <div class="recommended-starrating">-->
+<!--                                        <div class="stars-box">-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="listing-review">-->
+<!--                                        <div class="listing-review-col right pr-2">-->
+<!--                                            <span class="rating-number">-->
+<!--                                                  7.7-->
+<!--                                              </span>-->
+<!--                                        </div>-->
+<!--                                        <div class="listing-review-col left">-->
+<!--                                            <span class="quality">Exceptional</span>-->
+<!--                                            <span class="quality number">285 reviews</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="listing-review">-->
+<!--                                        <div class="listing-review-col left green">-->
+<!--                                            <span class="quality">93% Match for you!</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="recommended-prices text-right">-->
+<!--                                        <p class="extras">Price per night as low as</p>-->
+<!--                                        <div class="recommended-prices-inner">-->
+<!--                                            <span class="amount">$27</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash; Recommended-Property-Card &ndash;&gt;-->
+<!--                            <a class="Recommended-Property-Card">-->
+<!--                                <div class="recommended-col left" style="background-image: url(/clientImg/places/img-7.jpg);">-->
+
+<!--                                </div>-->
+<!--                                <div class="recommended-col right">-->
+<!--                                    <p class="recommended-title">The Quarter Phromphong </p>-->
+<!--                                    <div class="recommended-starrating">-->
+<!--                                        <div class="stars-box">-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="listing-review">-->
+<!--                                        <div class="listing-review-col right pr-2">-->
+<!--                                            <span class="rating-number">-->
+<!--                                                  7.7-->
+<!--                                              </span>-->
+<!--                                        </div>-->
+<!--                                        <div class="listing-review-col left">-->
+<!--                                            <span class="quality">Exceptional</span>-->
+<!--                                            <span class="quality number">285 reviews</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="listing-review">-->
+<!--                                        <div class="listing-review-col left green">-->
+<!--                                            <span class="quality">93% Match for you!</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="recommended-prices text-right">-->
+<!--                                        <p class="extras">Price per night as low as</p>-->
+<!--                                        <div class="recommended-prices-inner">-->
+<!--                                            <span class="amount">$27</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash; Recommended-Property-Card &ndash;&gt;-->
+<!--                            <a class="Recommended-Property-Card">-->
+<!--                                <div class="recommended-col left" style="background-image: url(/clientImg/places/img-6.jpg);">-->
+
+<!--                                </div>-->
+<!--                                <div class="recommended-col right">-->
+<!--                                    <p class="recommended-title">The Quarter Phromphong </p>-->
+<!--                                    <div class="recommended-starrating">-->
+<!--                                        <div class="stars-box">-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                            <i class="fas fa-star"></i>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="listing-review">-->
+<!--                                        <div class="listing-review-col right pr-2">-->
+<!--                                            <span class="rating-number">-->
+<!--                                                  7.7-->
+<!--                                              </span>-->
+<!--                                        </div>-->
+<!--                                        <div class="listing-review-col left">-->
+<!--                                            <span class="quality">Exceptional</span>-->
+<!--                                            <span class="quality number">285 reviews</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="listing-review">-->
+<!--                                        <div class="listing-review-col left green">-->
+<!--                                            <span class="quality">93% Match for you!</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="recommended-prices text-right">-->
+<!--                                        <p class="extras">Price per night as low as</p>-->
+<!--                                        <div class="recommended-prices-inner">-->
+<!--                                            <span class="amount">$27</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash; Recommended-Property-Card &ndash;&gt;-->
+                        </div>
+                        <!--end of  columns-col left -->
+                        <div class="columns-col right">
+                            <!-- sort-bar -->
+                            <div class="sort-bar d-flex flex-row justify-content-between">
+                                <div class="sort">Sort</div>
+                                <div style="background-color: #75a8f9" class="sort-inner">
+                                    <a style="color: white">
+                                        Best match
+                                    </a>
+                                </div>
+                                <div class="sort-inner">
+                                    <a>
+                                        Lowest price first
+                                    </a>
+                                </div>
+                                <div class="sort-inner">
+                                    <div class="form-group dropdown-group mb-sm-0">
+                                        <div class="dropdown">
+                                            <button class="dropdown-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                                <div class="dropdown-text">
+                                                    Distance
+                                                </div>  
+                                              <!-- <span class="caret"></span> -->
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                                <li>Option 1</li>
+                                                <li>Option 2</li>
+                                                <li>Option 3</li>
+                                                <li>Option 4</li>
+                                                <li>Option 5</li>
+                                                <li>Option 6</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sort-inner">
+                                    <div class="form-group dropdown-group mb-sm-0">
+                                        <div class="dropdown">
+                                            <button class="dropdown-select" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            
+                                                <div class="dropdown-text">
+                                                    Top Reviewed
+                                                </div>  
+                                              <!-- <span class="caret"></span> -->
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                                <li>Option 1</li>
+                                                <li>Option 2</li>
+                                                <li>Option 3</li>
+                                                <li>Option 4</li>
+                                                <li>Option 5</li>
+                                                <li>Option 6</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- sort-bar -->
+                            <!-- xuất hiện list hotel-->
+                            <div th:if="error != null" th:text="${error}" th:attr="class=${error != null ? 'w-100 text-danger text-center' : ''}">
+                                <div class="w-100 text-danger text-center"></div>
+                            </div>
+                            <ul>
+                                <li th:each="hotel : ${listHotel}">
+
+                                    <!-- begin of listing-card -->
+                                    <div class="listing-card">
+                                        <div class="listing-image-carousel">
+                                    <span class="top-badge listing-badges-span">
+                                        <span>Free cancellation</span>
+                                    </span>
+                                            <div class="listing-carousel owl-carousel owl-theme">
+
+                                                <div class="item" data-hash="0">
+                                                    <div class="listing-image" style="background-image: url('/clientImg/places/img-1.jpg');"></div>
+                                                </div>
+                                                <div class="item" data-hash="1">
+                                                    <div class="listing-image" style="background-image: url('/clientImg/places/img-1.jpg')"></div>
+                                                </div>
+                                                <div class="item" data-hash="2">
+                                                    <div class="listing-image" style="background-image: url('/clientImg/places/img-3.jpg');"></div>
+                                                </div>
+                                                <div class="item" data-hash="3">
+                                                    <div class="listing-image" style="background-image: url('/clientImg/places/img-5.jpg');"></div>
+                                                </div>
+                                                <div class="item" data-hash="4">
+                                                    <div class="listing-image" style="background-image: url('/clientImg/places/img-6.jpg');"></div>
+                                                </div>
+                                                <div class="item" data-hash="5">
+                                                    <div class="listing-image" style="background-image: url('/clientImg/places/img-7.jpg');"></div>
+                                                </div>
+                                                <div class="item" data-hash="6">
+                                                    <div class="listing-image" style="background-image: url('/clientImg/places/img-8.jpg');"></div>
+                                                </div>
+                                                <div class="item" data-hash="7">
+                                                    <div class="listing-image" style="background-image: url('/clientImg/places/img-9.jpg');"></div>
+                                                </div>
+                                                <div class="item" data-hash="8">
+                                                    <div class="listing-image" style="background-image: url('/clientImg/places/img-9.jpg');"></div>
+                                                </div>
+
+                                            </div>
+                                            <div class="listing-control">
+                                                <a class="button secondary url" href="#0" style="background-image: url('/clientImg/places/img-4.jpg');"></a>
+                                                <a class="button secondary url" href="#1" style="background-image: url('/clientImg/places/img-1.jpg');"></a>
+                                                <a class="button secondary url" href="#2" style="background-image: url('/clientImg/places/img-3.jpg');"></a>
+                                                <a class="button secondary url" href="#3" style="background-image: url('/clientImg/places/img-5.jpg');"></a>
+                                                <a class="button secondary url" href="#4" style="background-image: url('/clientImg/places/img-3.jpg');"></a>
+                                                <a class="button secondary url" href="#5" style="background-image: url('/clientImg/places/img-6.jpg');"></a>
+                                                <a class="button secondary url" href="#6" style="background-image: url('/clientImg/places/img-7.jpg');"></a>
+                                                <a class="button secondary url" href="#7" style="background-image: url('/clientImg/places/img-8.jpg');"></a>
+                                                <a class="button secondary url" href="#8" style="background-image: url('/clientImg/places/img-9.jpg');"></a>
+                                                <a class="button secondary see-all" href="/" style="background-image: url('/clientImg/places/img-9.jpg');">See All</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="listing-content">
+                                            <div class="listing-col left">
+                                                <!-- listing-badges -->
+                                                <div class="listing-badges">
+                                                    <ul>
+                                                        <li>
+                                                    <span class="success-badge listing-badges-span">
+                                                        <i class="fas fa-certificate"></i>
+                                                        <span>EasyCancel</span>
+                                                    </span>
+                                                        </li>
+                                                        <li>
+                                                    <span class="trending-badge listing-badges-span">
+                                                        <i class="fas fa-angle-double-up"></i>
+                                                        <span>Trending</span>
+                                                    </span>
+                                                        </li>
+                                                        <li>
+                                                    <span class="top-badge listing-badges-span">
+                                                        <span>EasyCancel</span>
+                                                    </span>
+                                                        </li>
+                                                        <li>
+                                                    <span class="preference-badge listing-badges-span">
+                                                        <i class="fas fa-balance-scale"></i>
+                                                        <span>Our preference</span>
+                                                    </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- listing-badges -->
+                                                <section class="listing-header">
+                                                    <h3 class="hotel-name"><span th:text="${hotel.name}"></span></h3>
+                                                    <div class="hotel-size"> <i class="fas fa-city"></i>  Hotel Type : <span th:text="${hotel.type}"></span> </div>
+                                                    <div class="listing-rating">
+                                                        <!--tự động hiện thêm số sao-->
+                                                        <div class="stars-box">
+                                                            <i th:each="star : ${#numbers.sequence(1, hotel.starLevel)}" class="fas fa-star"></i>
+                                                        </div>
+                                                        <div class="rating--text">
+                                                            <i class="fas fa-map-marker"></i>
+                                                            Hotel City and Country : <span th:text="${hotel.city + ', ' + hotel.country}"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-badges">
+                                                        <ul>
+                                                            <li>
+                                                        <span class="preference-badge-green listing-badges-span">
+                                                            <span>Free cancellation</span>
+                                                        </span>
+                                                            </li>
+                                                            <li>
+                                                        <span class="preference-badge-green listing-badges-span">
+                                                            <span>Pay Later</span>
+                                                        </span>
+                                                            </li>
+                                                            <li>
+                                                        <span class="preference-badge-green listing-badges-span">
+                                                            <span>Pay at the hotel</span>
+                                                        </span>
+                                                            </li>
+                                                            <li>
+                                                        <span class="preference-badge-green listing-badges-span">
+                                                            <span>+1</span>
+                                                        </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="listing-badges incentives-badges">
+                                                        <ul>
+                                                            <li>
+                                                        <span class="preference-badge-green listing-badges-span">
+                                                            <span>Prices are 22% cheaper than city's average price</span>
+                                                        </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="rating--text-addition">
+                                                        <i class="fas fa-user-friends"></i>
+                                                         Hotel City and Country : <span th:text="${hotel.city + ', ' + hotel.country}"></span>
+                                                    </div>
+                                                    <div class="rating--text-addition">
+                                                        <i class="fas fa-credit-card"></i>
+                                                        <span>Book without a credit card</span>
+                                                    </div>
+
+                                                </section>
+                                                <!-- listing-header -->
+                                                <div class="rating--text-addition rating-overview-box">
+                                                    <span>Highlights</span>
+                                                    <span class="rating-sm"><i class="fas fa-credit-card"></i></span>
+                                                    <span class="rating-sm"><i class="fas fa-bed"></i>x 2</span>
+                                                    <span class="rating-sm"><i class="fas fa-door-open"></i>x 3</span>
+                                                </div>
+                                            </div>
+                                            <div class="listing-col right">
+                                                <a th:href="@{/hotel/hotel_details(hotelId=${hotel.id},
+                                                keyword=${keyword},filter=${filter},checkin=${checkin},checkout=${checkout},
+                                                people=${people},room=${room})}"><button type="button" class="btn btn-primary" >Check Room Available</button></a>
+
+<!--                                                <div class="listing-review">-->
+<!--                                                    <div class="listing-review-col left pr-2">-->
+<!--                                                        <span class="quality">Very Good</span>-->
+<!--                                                        <span class="quality number">285 reviews</span>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="listing-review-col right">-->
+<!--                                                <span class="rating-number">-->
+<!--                                                      7.7-->
+<!--                                                  </span>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+                                                    <!-- listing-review -->
+<!--                                                    <div class="listing-badges text-right">-->
+<!--                                            <span class="badge-box-alert">-->
+<!--                                                <span class="inner-text">78% OFF TODAY</span>-->
+<!--                                            </span>-->
+<!--                                                    <span class="badge-box">-->
+<!--                                                <span class="inner-text">Free cancellation</span>-->
+<!--                                            </span>-->
+<!--                                                    <p class="extras">Price per night as low as</p>-->
+<!--                                                </div>-->
+<!--                                                &lt;!&ndash; listing-badges  &ndash;&gt;-->
+<!--                                                <div class="listing-prices text-right">-->
+<!--                                                    <div class="listing-prices-inner">-->
+<!--                                                        <span class="currency">$</span>-->
+<!--                                                        <span class="amount">27</span>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="listing-prices-action">-->
+<!--                                                        <span class="action">FREE CANCELLATION</span>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <!-- end of listing-card -->
+                                    </div>
+                                </li>
+                            </ul>
+
+
+                            <!-- pagination -->
+<!--                            <div class="pagination-container text-right">-->
+<!--                                <nav aria-label="...">-->
+<!--                                    <ul class="pagination">-->
+<!--                                        <li class="page-item disabled">-->
+<!--                                            <a class="page-link" href="#" tabindex="-1">Previous</a>-->
+<!--                                        </li>-->
+<!--                                        <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--                                        <li class="page-item active">-->
+<!--                                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>-->
+<!--                                        </li>-->
+<!--                                        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                                        <li class="page-item">-->
+<!--                                            <a class="page-link" href="#">Next</a>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </nav>-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash; pagination &ndash;&gt;-->
+
+                        </div>
+                        <!-- end of columns-col right -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- listing-section -->
+
+<!--        &lt;!&ndash; sub-footer-section &ndash;&gt;-->
+<!--        <section class="sub-footer-section destinations-section grey-section">-->
+<!--            <div class="container-fluid">-->
+<!--                <div class="content-contain">-->
+<!--                    <div class="row row-footer">-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>Help</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Help center</a></li>-->
+<!--                                    <li><a>FAQs</a></li>-->
+<!--                                    <li><a>Privacy policy</a></li>-->
+<!--                                    <li><a>Cookie policy</a></li>-->
+<!--                                    <li><a>Terms of use</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>About us</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>About us</a></li>-->
+<!--                                    <li><a>FAQs</a></li>-->
+<!--                                    <li><a>Privacy policy</a></li>-->
+<!--                                    <li><a>Cookie policy</a></li>-->
+<!--                                    <li><a>Terms of use</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>Destinations</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Help center</a></li>-->
+<!--                                    <li><a>FAQs</a></li>-->
+<!--                                    <li><a>Privacy policy</a></li>-->
+<!--                                    <li><a>Cookie policy</a></li>-->
+<!--                                    <li><a>Terms of use</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>Partner with us</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Help center</a></li>-->
+<!--                                    <li><a>FAQs</a></li>-->
+<!--                                    <li><a>Privacy policy</a></li>-->
+<!--                                    <li><a>Cookie policy</a></li>-->
+<!--                                    <li><a>Terms of use</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>Get the app</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>iOS app</a></li>-->
+<!--                                    <li><a>Android app</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--        &lt;!&ndash; sub-footer-section &ndash;&gt;-->
+
+<!--        &lt;!&ndash; footer-section &ndash;&gt;-->
+<!--        <section class="sub-footer-section footer-section">-->
+<!--            <div class="container-fluid">-->
+<!--                <div class="content-contain">-->
+<!--                    <div class="row row-footer">-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>Destination Cities</h5>-->
+<!--                                <h5>Asia</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Bali Hotels</a></li>-->
+<!--                                    <li><a>Bali Hotels</a></li>-->
+<!--                                    <li><a>Bali Hotels</a></li>-->
+<!--                                    <li><a>Bali Hotels</a></li>-->
+<!--                                    <li><a>Bali Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Asia</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Singapore Hotels</a></li>-->
+<!--                                    <li><a>Singapore Hotels</a></li>-->
+<!--                                    <li><a>Singapore Hotels</a></li>-->
+<!--                                    <li><a>Singapore Hotels</a></li>-->
+<!--                                    <li><a>Singapore Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Asia</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Singapore Hotels</a></li>-->
+<!--                                    <li><a>Singapore Hotels</a></li>-->
+<!--                                    <li><a>Singapore Hotels</a></li>-->
+
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>Europe</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Middle East</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Middle East</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Middle East</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>Americas</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Africa</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Africa</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>Europe</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Middle East</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Middle East</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Middle East</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>Middle East</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                    <li><a>London Hotels</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Americas</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Americas</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col">-->
+<!--                            <div class="sub-footer-box">-->
+<!--                                <h5>Americas</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Africa</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                </ul>-->
+<!--                                <h5>Africa</h5>-->
+<!--                                <ul>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                    <li><a>Mock Project Hotel</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--        &lt;!&ndash; footer-section &ndash;&gt;-->
+
+<!--        &lt;!&ndash; copyright-section &ndash;&gt;-->
+<!--        <section class="copyright-section">-->
+<!--            <div class="container-fluid">-->
+<!--                <div class="content-contain">-->
+<!--                    <div class="text-center copyrights-text">-->
+<!--                        <p class="copyrights-info">All material herein © 2005–2021 Agoda Company Pte. Ltd. All Rights Reserved.</p>-->
+<!--                        <p class="copyrights-info">Agoda is part of Booking Holdings Inc., the world leader in online travel &amp; related services.</p>-->
+<!--                    </div>-->
+<!--                    <ul class="copyright-ul">-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <img th:src="@{/clientImg/logos/logo.png}" alt="">-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <img th:src="@{/clientImg/logos/logo.png}" alt="">-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <img th:src="@{/clientImg/logos/logo.png}" alt="">-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <img th:src="@{/clientImg/logos/logo.png}" alt="">-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <img th:src="@{/clientImg/logos/logo.png}" alt="">-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="">-->
+<!--                                <img th:src="@{/clientImg/logos/logo.png}" alt="">-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                    <div class="text-center copyrights-text">-->
+<!--                        <p class="copyrights-info">©2021</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--        &lt;!&ndash; copyright-section &ndash;&gt;-->
+    </div>
+<!--    &lt;!&ndash; entry-box &ndash;&gt;-->
+
+    <script th:src="@{/clientJs/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/clientJs/jquery.matchHeight.js}" type="text/javascript"></script>
+    <script th:src="@{/clientJs/owl.carousel.js}" type="text/javascript"></script>
+    <script th:src="@{/clientJs/bootstrap.bundle.js}" type="text/javascript"></script>
+    <script th:src="@{/clientJs/main.js}" type="text/javascript"></script>
+
+</body>
+
+</html>
